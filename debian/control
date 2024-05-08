@@ -3,8 +3,7 @@ Section: editors
 Priority: optional
 Maintainer: Jose G. López <josgalo@gmail.com>
 Build-Depends: debhelper (>= 10), pkg-config, libxml-parser-perl,
- libxml2-dev, intltool, libgtk2.0-dev, python, python-dev,
- python-gtk2-dev, dh-python
+ libxml2-dev, intltool, libgtk2.0-dev, python, python-dev, python-gtk2-dev
 Standards-Version: 4.1.2
 Homepage: http://mooedit.sourceforge.net/
 Vcs-Git: https://gitlab.com/deb-pkg/medit.git
@@ -12,7 +11,7 @@ Vcs-Browser: https://gitlab.com/deb-pkg/medit
 
 Package: medit
 Architecture: any
-Depends: ${shlibs:Depends}, ${python:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Useful programming and around-programming text editor
  Features:
   * Configurable syntax highlighting.
