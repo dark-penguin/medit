@@ -1,0 +1,9 @@
+Description: Add Keywords key
+Author: Jose G. López <josgalo@gmail.com>
+--- a/moo/medit-app/medit.desktop.in
++++ b/moo/medit-app/medit.desktop.in
+@@ -8,3 +8,4 @@
+ MimeType=text/plain;
+ Icon=medit
+ Categories=Utility;TextEditor;
++_Keywords=editor;texteditor;text

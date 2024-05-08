@@ -1,0 +1,199 @@
+medit (1.2.92-1) unstable; urgency=medium
+
+  * Update the medit package to the latest existing version.
+  * Build without Python2 support.
+
+ -- darkpenguin <darkpenguin@posteo.de>  Thu, 09 May 2024 00:10:00 +0400
+
+medit (1.2.0-3) unstable; urgency=medium
+
+  * debian/compat: update to 10.
+  * debian/control:
+    - Update to debhelper 10. Remove --parallel option.
+    - Bump to Standards-Version 4.1.2.
+      + Remove menu as menu system is deprecated (Policy >= 3.9.8)
+    - Drop unnecessary dh-autoreconf build-dependency.
+    - Drop python-cairo-dev build-dependency.
+      Thanks to Laurent Bigonville (Closes: #882221).
+  * debian/copyright:
+    - Convert to Machine-readable format.
+  * debian/rules:
+    - Use all hardening flags (DEB_BUILD_MAINT_OPTIONS = hardening=+all).
+    - Remove '--with autoreconf' option and don't delete *.pyc file.
+
+ -- Jose G. López <josgalo@gmail.com>  Thu, 07 Dec 2017 19:06:28 +0100
+
+medit (1.2.0-2) unstable; urgency=low
+
+  * Migrate deprecated python-support to dh_python2 (Closes: #786239)
+  * Update Standards-Version 3.9.6. No changes required.
+  * Change Vcs-* fields to a new repository.
+
+ -- Jose G. López <josgalo@gmail.com>  Sat, 23 May 2015 13:07:16 +0200
+
+medit (1.2.0-1) unstable; urgency=low
+
+  * New upstream version.
+  * Update Standards-Version 3.9.5. No changes required.
+  * Add Vcs-* fields to point where development is done.
+  * Add fix-desktop-file.patch to add Keywords key to the desktop file.
+
+ -- Jose G. López <josgalo@gmail.com>  Fri, 04 Apr 2014 17:20:44 +0200
+
+medit (1.1.1-2) unstable; urgency=low
+
+  * QA upload.
+  * Migrated from Experimental to Unstable.
+
+ -- Muammar El Khatib <muammar@debian.org>  Sun, 12 May 2013 22:08:36 +0200
+
+medit (1.1.1-1) experimental; urgency=low
+
+  * New maintainer (Closes: #575203).
+  * New upstream release.
+  * debian/compat: update to 9.
+  * debian/control:
+    - Update to debhelper 9.
+    - Bump to Standards-Version 3.9.4. No changes required.
+    - Add dh-autoreconf to Build-Depends to update the build system.
+  * debian/rules:
+    - Add '--parallel' compilation.
+    - Rewrite to get rid of unnecessary dependencies and add hardening flags.
+  * Add fix_package_name.patch to change program name from medit-1 to medit.
+  * Add doc-base control files to register documentation with doc-base.
+  * Add a menu file.
+
+ -- Jose G. López <josgalo@gmail.com>  Mon, 25 Feb 2013 20:22:26 +0100
+
+medit (1.0.93-1) unstable; urgency=low
+
+  * QA upload.
+  * New upstream release.
+  * Hotkeys are working correctly in this new upstream release.
+    (Closes: #648960)
+
+ -- Muammar El Khatib <muammar@debian.org>  Sat, 07 Jan 2012 21:45:54 +0100
+
+medit (1.0.3-1) unstable; urgency=low
+
+  * QA upload.
+  * New upstream release. This release fixes an FTBFS with binutils-gold
+    (closes: #555595)
+  * debian/rules:
+    - disable dh_autotest since it acts on installed program.
+    - install target: set mode of usr/share/medit-1/language-specs/check.sh
+  * debian/control:
+    - add dependency on ${misc:Depends}
+    - add build-dependency on intltool
+    - drop build-dependency on cmake which is no longer needed
+    - drop leading article from short description
+    - drop dm-upload-allowed since currently no uploaders
+    - Standards-Version 3.9.2 (no change)
+  * Install upstream manpages instead of the ones in debian/
+
+ -- Ralf Treinen <treinen@debian.org>  Thu, 07 Jul 2011 09:36:06 +0200
+
+medit (0.10.4-1) unstable; urgency=low
+
+  * QA Upload.
+  * New upstream version. (Closes: #484257)
+  * Migrating the build system to dh(1) as upstream is using cmake now,
+    adding build-dependencies accordingly.
+
+ -- Bernd Zeimetz <bzed@debian.org>  Sun, 11 Jul 2010 19:48:21 +0200
+
+medit (0.9.2-1.2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Remove LOCALMODLIBS in configure and m4/moo-python.m4 to avoid unnecessary
+    linking with -lssl (closes: #571556).
+  * Stop installing MIME-Info database cache files.
+
+ -- Jakub Wilk <jwilk@debian.org>  Sat, 06 Mar 2010 19:40:15 +0100
+
+medit (0.9.2-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Backport an upstream patch that fixes truncating files bug
+    due to a character set conversion bug. Closes: #504767
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 10 Nov 2008 08:56:04 +0100
+
+medit (0.9.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/dh_checkbuildlog: Update.
+  * debian/watch: Likewise.
+
+ -- Arthur Loiret <arthur.loiret@gmail.com>  Mon, 14 Jan 2008 23:19:59 +0000
+
+medit (0.9.0-1) unstable; urgency=low
+
+  [ Arthur Loiret ]
+  * New upstream release.
+  * Use the dh_checkbuildlog script from the aulopa project.
+  * Set Standards-Version to 3.7.3.
+
+  [ Pierre Habouzit ]
+  * DM-Upload-Allowed: yes.
+
+ -- Arthur Loiret <arthur.loiret@gmail.com>  Fri, 14 Dec 2007 11:54:59 +0000
+
+medit (0.8.11-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Arthur Loiret <arthur.loiret@gmail.com>  Sun, 11 Nov 2007 13:41:20 +0100
+
+medit (0.8.10-2) unstable; urgency=low
+
+  * debian/rules: Don't move /usr/lib/moo files to /usr/share/medit.
+    (Closes: #441974)
+  * debian/dirs: Remove /usr/share/medit.
+  * debian/control: mention homepage in Homepage: field.
+
+ -- Arthur Loiret <arthur.loiret@gmail.com>  Thu, 13 Sep 2007 16:50:03 +0200
+
+medit (0.8.10-1) unstable; urgency=low
+
+  * New upstream release
+  * Build fine twice in a row (Closes: #424570)
+  * debian/rules: remove *.pyc files on clean
+
+ -- Arthur Loiret <arthur.loiret@gmail.com>  Fri, 24 Aug 2007 18:21:42 +0200
+
+medit (0.8.9-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/control: keep python support adding python-cairo-dev to Build-Depends
+  * debian/copyright: add missing copyrights and update licenses
+    + Thanks a lot to upstream author for his new LICENSE file
+  * debian/docs: remove TODO file from list as it has been removed upstream
+  * Update Maintainer's address in debian/copyright and debian/README.Debian
+
+ -- Arthur Loiret <arthur.loiret@gmail.com>  Tue, 07 Aug 2007 00:07:32 +0000
+
+medit (0.8.6-1) unstable; urgency=low
+
+  * New upstream release
+  * Add (unintentionally removed on last upload) debian/watch
+  * Build with xml support
+    + debian/control: add libxml2-dev to Build-Depends
+    + debian/rules: add --with-xml to confflags
+
+ -- Arthur Loiret <arthur.loiret@gmail.com>  Sat, 16 Jun 2007 20:29:06 +0200
+
+medit (0.8.5-1) unstable; urgency=low
+
+  * New upstream release
+  * Add debian/watch
+  * debian/rules: strip spaces and remove useless comments
+  * debian/control: new Maintainer mail address
+
+ -- Arthur Loiret <arthur.loiret@gmail.com>  Tue, 12 Jun 2007 10:46:39 +0200
+
+medit (0.8.3-1) unstable; urgency=low
+
+  * Initial release (Closes: #392291)
+
+ -- Arthur Loiret <freacky22527@free.fr>  Sun,  8 Apr 2007 22:47:29 +0200

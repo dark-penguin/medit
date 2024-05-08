@@ -1,0 +1,8 @@
+Document: medit-scripting-manual
+Title: medit scripting manual
+Abstract: This manual describes access to medit functionalities through scripting.
+Section: Editors
+
+Format: HTML
+Index: /usr/share/doc/medit/help/script/index.html
+Files: /usr/share/doc/medit/help/script/*.html

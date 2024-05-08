@@ -1,0 +1,100 @@
+#!/usr/bin/perl -w
+
+# USAGE:
+# debian/rules:
+#  $(MAKE) foo | tee log-foo
+#  $(MAKE) bar | tee log-bar
+#  ...
+#  dh_checkbuildlog log-foo log-bar
+
+use strict;
+use Debian::Debhelper::Dh_Lib;
+
+init();
+
+if (defined $ENV{DEB_BUILD_OPTIONS} && $ENV{DEB_BUILD_OPTIONS} =~ /nocheck/) {
+	exit;
+}
+
+my @files;
+my @warnings;
+
+sub uniq {
+	my @list;
+	my @result;
+	my $uniq;
+	foreach my $item (@_) {
+	$uniq = 0;
+		foreach my $elem (@list) {
+			if($elem eq $item) {
+				$uniq = 1;
+				last;
+			}
+		}
+		if($uniq == 0) {
+			push @result, $item;
+		}
+		push @list, $item;
+	}
+	return @result;
+}
+
+sub list {
+	my %list;
+	my $foo;
+
+	foreach my $item (@_) {
+		$foo = 0;
+		foreach my $key (sort keys %list) {
+			if($key eq $item) {
+				$list{$key}++;
+				$foo = 1;
+			}
+		}
+		if($foo == 0) {
+			$list{$item} = 1;
+		}
+	}
+	foreach my $key (sort keys %list) {
+		print " $list{$key} $key\n";
+	}
+}
+
+
+sub warn_summay {
+	open(LOGFILE, $_[0])
+		or die "error: could not open $_[0]\n";
+	while(my $line = <LOGFILE>) {
+
+		# we got a warning
+		if($line =~ /^.*\..*:\d+: warning: /) {
+			chomp($line);
+
+			$line =~ /^(.*\..*):\d+: warning: (.*)$/
+				and my $file = $1
+				and my $warning = $2;
+
+			$warning =~ s/('[^']+')/???/g;
+			$warning =~ s/argument \d+/argument ???/g;
+
+			push @files, $file;
+			push @warnings, $warning;
+		}
+	}
+}
+
+
+foreach my $item (@ARGV) {
+	verbose_print("parsing: $item");
+	warn_summay($item);
+}
+
+
+print "Warnings per Files:\n";
+list(@files);
+
+print "\n\n";
+
+print "Warnings per Types:\n";
+list(@warnings);
+

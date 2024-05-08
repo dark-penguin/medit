@@ -1,0 +1,12 @@
+Fix package name to match debian package name.
+--- a/configure.ac
++++ b/configure.ac
+@@ -39,7 +39,7 @@
+ AC_SUBST(MOO_COPYRIGHT,"_moo_copyright_")
+ 
+ # keep in sync with po/maintain
+-AC_SUBST(MOO_PACKAGE_NAME,"medit-1")
++AC_SUBST(MOO_PACKAGE_NAME,"medit")
+ 
+ MOO_PREFS_XML_FILE_NAME="prefs.xml"
+ MOO_STATE_XML_FILE_NAME="state.xml"
