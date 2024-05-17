@@ -17,7 +17,7 @@ override_dh_auto_configure:
 
 override_dh_auto_install:
 	dh_auto_install
-	chmod 755 debian/medit/usr/share/medit-1/language-specs/check.sh
+	chmod 755 debian/medit/usr/share/medit/language-specs/check.sh
 	find $(CURDIR)/debian/medit/ -type d -empty -delete
 
 override_dh_clean:
