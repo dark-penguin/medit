@@ -9,12 +9,19 @@ This repository contains the latest known official version of medit, with a `deb
 
 Building
 --------
+#### With Docker:
+```
+docker build -o <output_path> .
+```
+Builds the packages and stores them in <output_path>
+
+#### Manually:
 - You can build on a modern distribution (e.g. Debian 12 Bookworm)
 - Add APT sources for Buster (essential) and Bullseye (optional if you want some build dependencies to be more modern)
 - Clone this repository and `cd` into it
 - Install dependencies - some dependencies will be picked up from Buster, and some from whatever more modern you have available:
   - The easy way: `apt-get build-dep medit`
-  - Manually: `apt-get install debhelper pkg-config libxml-parser-perl libxml2-dev intltool libgtk2.0-dev python python-dev python-gtk2-dev`
+  - Manually: `apt-get install --no-install-recommends build-essential debhelper pkg-config intltool libxml-parser-perl libxml2-dev python2 python2-dev python-gtk2-dev libgtk2.0-dev`
   - The Debian Maintainer way: `apt-get install devscripts`, then `mk-build-deps -ir` to install build-deps specified in the package
   - You also need `fakeroot` to build packages without being root (and you should NOT build stuff as root!)
 - `MAKEFLAGS="-j4" fakeroot debian/rules binary` - build a Debian package *in the parent directory*
