@@ -1,0 +1,11 @@
+Types: deb
+URIs: http://archive.debian.org/debian
+Suites: buster buster-updates
+Components: main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.pgp
+
+Types: deb
+URIs: http://archive.debian.org/debian-security
+Suites: buster/updates
+Components: main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.pgp

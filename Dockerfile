@@ -1,8 +1,6 @@
-FROM debian:bookworm AS build-stage
+FROM debian:trixie AS build-stage
 
-RUN sed -i /etc/apt/sources.list.d/debian.sources \
-    -e 's|^Suites: bookworm bookworm-updates|Suites: bookworm bookworm-updates bullseye bullseye-updates buster buster-updates|' \
-    -e 's|^Suites: bookworm-security|Suites: bookworm-security bullseye-security buster/updates|'
+COPY *.sources /etc/apt/sources.list.d/
 
 RUN apt-get update
 
@@ -12,7 +10,7 @@ RUN apt-get install -y --no-install-recommends build-essential \
     debhelper pkg-config intltool libxml-parser-perl libxml2-dev \
     python2 python2-dev python-gtk2-dev libgtk2.0-dev
 
-RUN MAKEFLAGS="-j4" debian/rules binary
+RUN MAKEFLAGS="-j$(nproc)" debian/rules binary
 
 
 

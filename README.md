@@ -16,7 +16,7 @@ docker build -o <output_path> .
 Builds the packages and stores them in <output_path>
 
 #### Manually:
-- You can build on a modern distribution (e.g. Debian 12 Bookworm)
+- You can build on a modern distribution (e.g. Debian 13 Trixie)
 - Add APT sources for Buster (essential) and Bullseye (optional if you want some build dependencies to be more modern)
 - Clone this repository and `cd` into it
 - Install dependencies - some dependencies will be picked up from Buster, and some from whatever more modern you have available:
@@ -26,7 +26,7 @@ Builds the packages and stores them in <output_path>
   - You also need `fakeroot` to build packages without being root (and you should NOT build stuff as root!)
 - `MAKEFLAGS="-j4" fakeroot debian/rules binary` - build a Debian package *in the parent directory*
 
-The resulting Bookworm package does not have any runtime dependencies you can't satisfy with Bookworm repositories, so you can simply install it on Bookworm without any trouble.
+The resulting Trixie package does not have any runtime dependencies you can't satisfy with Trixie repositories, so you can simply install it on Trixie without any trouble.
 
 
 Notes
@@ -35,7 +35,7 @@ For some reason, `MAKEFLAGS="-j4"` does not have an effect, so don't be surprise
 
 Details
 -------
-Here's which dependencies were picked up from which repositories when I was building the Bookworm release (as described above):
+Here's which dependencies were picked up from which repositories when I was building the Trixie release (as described above):
 
 #### Buster:
 ```
@@ -69,6 +69,6 @@ python-dev-is-python2 all 2.7.18-9 [1,528 B]
 python-pkg-resources all 44.1.1-1 [182 kB]
 ```
 
-The rest of them were from Bookworm.
+The rest of them were from Trixie.
 
-I don't know why it pulled both `libffi6` from Buster, `libffi7` from Bullseye, and `libffi-dev` from Bookworm.
+I don't know why it pulled both `libffi6` from Buster, `libffi7` from Bullseye, and `libffi-dev` from Trixie.
